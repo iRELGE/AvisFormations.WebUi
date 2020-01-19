@@ -1,0 +1,159 @@
+﻿
+@model AvisFormations.WebUi.Models.ViewFormationAvisModel
+@{
+    ViewBag.Title = "DetailsFormation";
+}
+
+<h2>DetailsFormation</h2>
+
+
+<section id="head">
+    <div class="container">
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <h3>@Model.nom</h3>
+                <h6>Une formation d'exellence en @Model.nom </h6>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="body">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-8">
+                <!-- Video 4k -->
+                <video class="video-size" style="height: 20rem" controls>
+                    <source src="video/Pexels-Videos.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+            <div class="col-md-4 mt-3">
+                <p><span class="text-secondary mr-2">Accès à l'unité:</span>460 dh</p>
+                <p><span class="text-secondary mr-2">Abonnement :</span>300 dh/moi</p>
+                <p><span class="text-secondary mr-2">Git Repository :</span><a href="@Model.url">Lien</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <!-- Nav start -->
+                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                           aria-controls="home" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                           aria-controls="profile" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                           aria-controls="contact" aria-selected="false">Avis (@Model.nombreAvis)</a>
+                    </li>
+                </ul>
+                <div class="tab-content mb-5" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        @Model.description
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        Débutant front-end
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="container">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <!-- Note Moyen -->
+                                    <h6 class="mt-3 lead text-monospace">
+                                        Evaluations
+                                    </h6>
+                                    <span class="display-2">@Model.noteFormation</span>
+                                </div>
+                                <div class="col-md-6 mt-5">
+                                    <!-- progress bar start -->
+                                    <div class="progress mb-2 w-50">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%;"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="progress mb-2 w-50">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%"
+                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="progress mb-2 w-50">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="progress mb-2 w-50">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
+                                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="progress mb-2 w-50">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 90%"
+                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <!-- progress bar end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nav end -->
+                <section id="feedback">
+                    <div class="contaiber">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="text-monospace">Ce qu'ils disent de cette formation</h4>
+                            </div>
+                        </div>
+                        @{
+                            if (Model.avis != null)
+                            {
+                                foreach (var a in Model.avis)
+                                {
+
+                                    <div class="row">
+                                        <div class="col d-flex my-4">
+                                            <p class="mr-5">@a.Nom</p>
+                                            <p class="w-50">
+                                                @a.Description<br>
+                                                <span class="text-secondary">@a.DateAvis</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <p>aucun avis</p>
+                            }
+
+
+                        }
+
+
+                    </div>
+                </section>
+
+                <!-- modal start -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Button trigger modal -->
+
+
+                            @Html.ActionLink("Ajouter un avis", "LaisserUnAvis", "Avis", new { nSeo = Model.nomseo}, htmlAttributes: null)
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal end -->
+            </div>
+        </div>
+    </div>
+</section>

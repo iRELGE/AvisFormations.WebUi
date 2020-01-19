@@ -1,0 +1,65 @@
+﻿@model List<AvisFormations.WebUi.Models.ViewFormationAvisModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<header>
+    <div class="container mt-4">
+        <!-- black baground start -->
+        <section id="hero"
+                 class="text-warning d-flex justify-content-center align-items-center flex-column rounded ">
+            <h2>Avis Formation</h2>
+            <p>Choisisser la meilleure formation !</p>
+        </section>
+        <!-- black baground end -->
+    </div>
+</header>
+
+<section id="formation">
+    <div class="container mb-3">
+        <!-- Formation card start -->
+        <div class="row">
+            <div class="col mt-4 d-flex">
+               
+                <!-- card start 02-->
+                @foreach (var l in Model)
+                {
+
+                <div class="card mr-1 border-0 shadow" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">@Html.ActionLink(l.nom,"DetailsFormation","Formations",new {nSeo=l.nomseo },htmlAttributes:null)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            @{
+                                var starNumber = 5;
+                                for (int i = 0; i < l.noteFormation - 1; i++)
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                                if (l.noteFormation % 1 != 0)
+                                {
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                    starNumber = 4;
+                                }
+                                for (var i = l.noteFormation; i < starNumber; i++)
+                                {
+                                    <i class="far fa-star"></i>
+                                }
+                            }
+
+
+                        </h6>
+                        <p class="card-text">
+                            @l.description
+                        </p>
+                    </div>
+                </div>
+                }
+
+                <!-- card end 04-->
+            </div>
+        </div>
+        <!-- Formation card end -->
+    </div>
+
+</section>
+
+

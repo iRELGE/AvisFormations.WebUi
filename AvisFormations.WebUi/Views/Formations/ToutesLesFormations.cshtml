@@ -1,0 +1,44 @@
+﻿<!--
+
+8- RAPPEL DU MADEL AvisFormation sur data a Formation
+9-cree votre  cart en HTML contient un titre pour le nom du formation une paragraphe pour la description du formation
+    un champe pour lien nom de seo et un button pour voir les autres detail de votre formation
+10-boucler sur votre cart pour avoir tout les formation que vous avez sur Avisentities Formation
+ 11-Ajouter le controleur Avis -->
+
+
+
+@model List<AvisFormations.Data.Formation>
+@{
+    ViewBag.Title = "ToutesLesFormations";
+}
+
+
+<section id="hero">
+    <div class="h-100 d-flex justify-content-around flex-wrap">
+        <!-- card Start -->
+        @foreach (var l in Model)
+        {
+            <div class="card border-0 shadow mr-3 mb-3" style="width:30rem;">
+                <img src="../img/austin-distel.jpg" class="card-img-top" alt="Formation">
+                <div class="card-body">
+                    <h5 class="card-title">@l.Nom</h5>
+                    <p class="card-text">
+                        @l.Description
+                    </p>
+                    <p><span class="text-secondary">Urlg: </span>@l.Url</p>
+                    @Html.ActionLink("Details","DetailsFormation", "Formations", new { nSeo = l.NomSeo }, htmlAttributes: null)
+                </div>
+
+
+
+
+            </div>
+
+        }
+        <!-- card End -->
+
+    </div>
+
+</section>
+

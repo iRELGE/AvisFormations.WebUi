@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>@ViewBag.Title - Formation</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">C# Fortion</h5>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="#">@Html.ActionLink("Accueil", "Index", "Home")</a>
+                <a class="p-2 text-dark" href="#">@Html.ActionLink("Catalogue des formations", "ToutesLesFormations", "Formations")</a>
+                <a class="p-2 text-dark" href="#">@Html.ActionLink("À propos de", "About", "Home")</a>
+                <a class="p-2 text-dark" href="#">@Html.ActionLink("Contact", "Index", "Contact")</a>
+
+
+
+            </nav>
+            @Html.Partial("_LoginPartial")
+        </div>
+  
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
