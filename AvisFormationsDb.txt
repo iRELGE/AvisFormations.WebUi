@@ -1,0 +1,22 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [Id]
+      ,[Nom]
+      ,[Description]
+      ,[Note]
+      ,[IdFormation]
+      ,[DateAvis]
+      ,[UserId]
+  FROM [AvisFormationsDb].[dbo].[Avis]
+
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [Id]
+      ,[Nom]
+      ,[Url]
+      ,[Description]
+      ,[NomSeo]
+  FROM [AvisFormationsDb].[dbo].[Formation]
+
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [User_id]
+      ,[Nom]
+  FROM [AvisFormationsDb].[dbo].[Person]
